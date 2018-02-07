@@ -1,10 +1,26 @@
-<h1>Results Page</h1>
-
+<%- include('header') -%>
+<div class="container">
+<h1>Search Results</h1>
+<a href="/" type="button" class="btn btn-primary search-again">search again</a>
+	
+<div class="container">
+	<div class="row">
 <% data["Search"].forEach(function(movie){ %>
-   <li> <%= movie["Title"] %> 
-        <br />
-        <img src="<%= movie["Poster"]  %>" />
-   </li>
-<% }) %>
+	<div class="card" style="width: 20rem;">
+	<% if(movie['Poster'] !== "N/A") { %>
+  <img class="card-img-top" src="<%= movie['Poster']  %>" alt="<%= movie["Title"] %>">
+   <% } else { %>
+   <img class="card-img-top" src="img/default.png" alt="<%= movie["Title"] %>">
+<% } %>
+  <div class="card-block">
+    <h4 class="card-title"><%= movie["Title"] %> </h4>
+    <h5 class="card-title"><%= movie["Year"] %> </h5>
+  </div>
+</div>
 
-<a href="/">search again</a>
+<% }) %>
+	</div>
+	</div>
+
+	</div>
+<%- include('footer') -%>

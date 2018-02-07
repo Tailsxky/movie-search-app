@@ -1,6 +1,14 @@
-<h1>Search for a movie</h1>
+<%- include('header') -%>
+<div class="container">
+	<h2>Search</h2>
+	<form action="/results" method="GET">
+		<div class="form-group">
+	    <input id="movie" type="text" placeholder="search" name="search">
+	    <input id="submit" type="submit" class="btn btn-primary" disabled="true">
+	    </div>
+	    <span id="info"></span>
+	</form>
+	</div>
+	</div>
 
-<form action="/results" method="GET">
-    <input type="text" placeholder="search" name="search">
-    <input type="submit">
-</form>
+<%- include('footer') -%>
