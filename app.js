@@ -16,13 +16,23 @@ app.get("/",function(req,res){
 app.get("/results", function(req, res){
     var query = req.query.search;
     console.log(query);
-    request("http://www.omdbapi.com/?s=" + query + "&apikey=thewdb", function(error, response, body){
-        if(!error && response.statusCode === 200){
+    request("http://www.omdbapi.com/?s=" + query + "&apikey=thewdb", function(err, response, body){
+        if(err){
+            return next(err);
+        }
+        else if(!err && response.statusCode === 200){
             var data = JSON.parse(body);
+            if(data.Response !== "False"){
+                console.log(data.Response)
             res.render("results", {data:data});
+        }
+            else {
+            res.render("noresults");
+            }
         }    
     });
 });
+
 
 app.listen(3030, process.env.IP, function(){
     console.log("Movie app started!");
