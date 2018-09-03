@@ -23,7 +23,7 @@ app.get("/results", function(req, res){
         else if(!err && response.statusCode === 200){
             var data = JSON.parse(body);
             if(data.Response !== "False"){
-                console.log(data.Response)
+                //console.log(data.Response)
             res.render("results", {data:data});
         }
             else {
